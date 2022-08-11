@@ -1,0 +1,63 @@
+{
+  "name": "productsapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./dist/index.js --env=production",
+    "start:dev": "nodemon --watch ./**/*.ts --exec ts-node src/index.ts",
+    "lint": "eslint . --ext .ts",
+    "build": "tsc -p .",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "migrate": "rm -rf build && yarn build && yarn typeorm migration:generate ./src/migrations/added-entity -d ./src/utils/data-source.ts",
+    "db:push": "rm -rf build && yarn build && yarn typeorm migration:run -d src/utils/data-source.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abhishek-thakur1/productsAPI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "command-line-args": "^5.2.1",
+    "config": "^3.3.7",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "envalid": "^7.3.1",
+    "express": "^4.18.1",
+    "http-status-codes": "^2.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.7.3",
+    "redis": "^4.2.0",
+    "reflect-metadata": "^0.1.13",
+    "tedis": "^0.1.12",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.0.0",
+    "typeorm": "^0.3.7",
+    "typescript": "^4.7.4",
+    "winston": "^3.8.1",
+    "zod": "^3.17.9"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/command-line-args": "^5.2.0",
+    "@types/config": "^0.0.41",
+    "@types/cookie-parser": "^1.4.3",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/jsonwebtoken": "^8.5.8",
+    "@types/morgan": "^1.9.3",
+    "@typescript-eslint/eslint-plugin": "^5.30.6",
+    "@typescript-eslint/parser": "^5.30.6",
+    "eslint": "^8.20.0",
+    "find": "^0.3.0",
+    "fs-extra": "^10.1.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.19"
+  }
+}
